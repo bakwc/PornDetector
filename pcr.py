@@ -332,12 +332,25 @@ def predictUrl(url):
   time.sleep(0.5)
   predictTest()
 
-train()
-time.sleep(0.5)
-predict()
+def printUsage():
+  print 'Usage: '
+  print '  %s train                              - train model' % sys.argv[0]
+  print '  %s url http://sample.com/img.jpg      - check given url' % sys.argv[0]
+  sys.exit(42)
 
-#predictTest()
-
-#predictUrl('http://testurl.jpg')
-
+if __name__ == '__main__':
+  if len(sys.argv) < 2:
+    printUsage()
+  mode = sys.argv[1]
+  if mode == 'train':
+    train()
+    time.sleep(0.5)
+    predict()
+  elif mode == 'url':
+    if len(sys.argv) < 3:
+      printUsage()
+    url = sys.argv[2]
+    predictUrl(url)
+  else:
+    printUsage()
 
