@@ -1,5 +1,5 @@
 # PornDetector
-Porn images (nudity) detector with python, scikit-learn and opencv. I was able to get ~90% accuracy on markup with 1500 positive and 1500 negative samples. It use two machine-learned classifiers - one of them use HSV colors histogram, and another use SIFT descriptors.
+Porn images (nudity) detector with python, scikit-learn and opencv. I was able to get ~85% accuracy on markup with 1500 positive and 1500 negative samples. It use two machine-learned classifiers - one of them use HSV colors histogram, and another use SIFT descriptors.
 
 ### Requirements
 - python 2.7
