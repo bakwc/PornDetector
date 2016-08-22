@@ -12,6 +12,7 @@ Second one (nnpcr.py) uses tensorflow neural network. I was able to get ~90% acc
 
 ### Requirements of tensorlflow detector
 - python 2.7
+- opencv 2.4 (you can take binary from repository)
 - latest tensorflow
 
 This is my configuration, may be it can work with another library versions.
