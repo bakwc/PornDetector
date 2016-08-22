@@ -3,7 +3,7 @@ Two python porn images (nudity) detectors.
 
 First one (pcr.py) use scikit-learn and opencv. I was able to get ~85% accuracy on markup with 1500 positive and 1500 negative samples. It use two machine-learned classifiers - one of them use HSV colors histogram, and another use SIFT descriptors.
 
-Second one uses tensorflow (nnpcr.py). I was able to get ~90% accuracy on the same markup. It use 4 convolution and max_pool layers with 3x3 filters with softmax.
+Second one (nnpcr.py) uses tensorflow. I was able to get ~90% accuracy on the same markup. It use 4 convolution and max_pool layers with 3x3 filters with softmax.
 
 ### Requirements of opencv & sklearn detector
 - python 2.7
