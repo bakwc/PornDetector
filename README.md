@@ -1,14 +1,22 @@
 # PornDetector
-Porn images (nudity) detector with python, scikit-learn and opencv. I was able to get ~85% accuracy on markup with 1500 positive and 1500 negative samples. It use two machine-learned classifiers - one of them use HSV colors histogram, and another use SIFT descriptors.
+Two python porn images (nudity) detectors.
 
-### Requirements
+First one (pcr.py) use scikit-learn and opencv. I was able to get ~85% accuracy on markup with 1500 positive and 1500 negative samples. It use two machine-learned classifiers - one of them use HSV colors histogram, and another use SIFT descriptors.
+
+Second one uses tensorflow (nnpcr.py). I was able to get ~90% accuracy on the same markup. It use 4 convolution and max_pool layers with 3x3 filters with softmax.
+
+### Requirements of opencv & sklearn detector
 - python 2.7
 - scikit-learn 0.15
 - opencv 2.4 (build it from sources, cause it [missing SIFT](http://stackoverflow.com/questions/18561910/opencv-python-cant-use-surf-sift) by default)
 
+### Requirements of tensorlflow detector
+- python 2.7
+- latest tensorflow
+
 This is my configuration, may be it can work with another library versions.
 
-### Usage
+### Usage of opencv & sklearn detector
 - Url prediction demo: `./pcr.py url http://example.com/img.jpg`
 - Code usage:
 ```python
@@ -19,9 +27,20 @@ predictions = model.predict(['image1.jpg', 'image2.jpg', 'image3.jpg'])
 print predictions
 ```
 
+### Usage of tensorlflow detector
+- Url prediction demo: `./nnpcr.py url http://example.com/img.jpg`
+- Code usage:
+```python
+from nnpcr import NNPCR
+model = NNPCR()
+model.loadModel('model.bin')
+predictions = model.predict(['image1.jpg', 'image2.jpg', 'image3.jpg'])
+print predictions
+```
+
 ### Train model
 - create directory 1 (with non-porn images), 2 (with porn images), cache (empty)
-- Run `./pcr.py train`.
+- Run `./pcr.py train` (to train opencv & sklearn) or `./nnpcr.py train` (for tensorflow one).
 
 After train finish you will see accuracy and you will get "model.bin" file with your trained model. Now you can use it to detect porn (see functions predictTest and predictUrl). I added a sample model (model.bin) - you can test it without training your own model, but I recomend you to gather some huge collection of images (eg, 50K) for best results.
 
